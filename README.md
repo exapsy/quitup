@@ -15,11 +15,13 @@ python ./quitup.py upload --all
 
 ### Commands
 
-#### `addalias <dest = '~/.zshrc'>`
+#### `addalias`
 Adds alias for **Quitup** in the destination bash 
 ```bash
 alias quitup='<repo_dir>/quitup.py'
 ```
+
+- `--dist <file>` - The file in which the alias should be placed in (default=`~/.zshrc`)
 
 #### `setup`
 
