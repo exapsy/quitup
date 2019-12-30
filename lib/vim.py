@@ -1,27 +1,63 @@
-import shutil
 import lib.os
 
 def installVim():
     lib.os.installPackage('vim')
 
 def copyFiles():
-    shutil.copyfile('../files/vim/.vimrc', '~/.vimrc')
-    shutil.copytree('../files/vim/.vim', '~/.vim')
+    from shutil import copyfile, copytree
+    from pathlib import Path
+    from sys import exit
+    from lib.log import fatal, getWarningMessage
+
+    # Home directory
+    home = str(Path().home())
+
+    # Copy .vimrc into root directory
+    try:
+        copyfile(
+            './files/vim/.vimrc',
+            home + '/.vimrc')
+    except FileNotFoundError:
+        fatal(
+            '.vimrc file not found in repository\'s files directory')
+        exit()
+
+    # Copy .vim directory into root directory
+    try:
+        copytree(
+            './files/vim/.vim',
+            home + '/.vim')
+    except FileNotFoundError:
+        fatal(
+            '.vim directory not found in repository\'s files directory')
+    except FileExistsError:
+        
+        proceed = input(getWarningMessage(
+            'Directory already exists, should I proceed? Yy/Nn: '))
+        if proceed.lower() != 'y':
+            return
+        copytree(
+            './files/vim/.vim',
+            home + '/.vim',
+            dirs_exist_ok=True)
 
 def installYouCompleteMe():
-    print('Incomplete')
+    from lib.log import error
+    error('Incomplete')
 
 def installVundlePlugins():
-    print('Incomplete')
+    from os import system
+    system('vim +BundleInstall +qall')
 
 def setupVim():
-    print('Installing vim ...')
+    from lib.log import info, ok
+    info('Installing vim ...')
     installVim()
-    print('Setting up vim configurations ...')
-    print('Copying vim files ...')
+    info('Setting up vim configurations ...')
+    info('Copying vim files ...')
     copyFiles()
-    print('Installing youcompleteme')
+    info('Installing youcompleteme')
     installYouCompleteMe()
-    print('Installing vundle plugins')
+    info('Installing vundle plugins')
     installVundlePlugins()
-    print('Done!')
+    ok('Done!')
