@@ -43,7 +43,7 @@ def copyFiles():
 
 def installYouCompleteMe():
     from lib.log import error
-    error('Incomplete')
+    error('installYouCompleteMe: Incomplete')
 
 def installVundlePlugins():
     from os import system
