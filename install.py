@@ -1,3 +1,2 @@
-import cmd.isPlatformValid
-
-import cmd.arguments
+import cmd.checkPlatform
+import cmd.argParser

@@ -7,6 +7,11 @@ import argparse
 parser = argparse.ArgumentParser(
     'QUITUP',
     description='Quick setup for my linux platform')
+parser.add_argument(
+    '-v',
+    '--version',
+    help='show program version',
+    action='store_true')
 subparsers = parser.add_subparsers(
     help='sub-command help')
 
@@ -15,6 +20,7 @@ setupParser = subparsers.add_parser(
     'setup',
     help='setup help',
     description='')
+setupParser.set_defaults(which='setup')
 setupParser.add_argument(
     '--all',
     action='store_true',
@@ -36,6 +42,7 @@ uploadParser = subparsers.add_parser(
     'upload',
     help='upload help',
     description='Uploads configuration changes to git')
+uploadParser.set_defaults(which='upload')
 uploadParser.add_argument(
     '--all',
     action='store_true',
@@ -52,4 +59,14 @@ uploadParser.add_argument(
     default=False,
     help='Commits & pushes zsh changes')
 
-parser.parse_args()
+ARGS = parser.parse_args()
+
+if ARGS.version:
+    from lib.app import getRelease
+    print(getRelease())
+
+elif ARGS.which == 'setup':
+    import cmd.argParser.setup
+
+elif ARGS.which == 'upload':
+    import cmd.argParser.upload
