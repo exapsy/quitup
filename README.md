@@ -9,11 +9,17 @@
 ## Usage
 
 ```sh
-python ./install.py setup --vim
-python ./install.py upload --all
+python ./quitup.py setup --vim
+python ./quitup.py upload --all
 ```
 
 ### Commands
+
+#### `addalias <dest = '~/.zshrc'>`
+Adds alias for **Quitup** in the destination bash 
+```bash
+alias quitup='<repo_dir>/quitup.py'
+```
 
 #### `setup`
 

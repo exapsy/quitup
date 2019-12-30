@@ -59,6 +59,23 @@ uploadParser.add_argument(
     default=False,
     help='Commits & pushes zsh changes')
 
+# Addalias parser - create parser for addalias command
+addalias = subparsers.add_parser(
+    'addalias',
+    help='addalias help',
+    description='''
+        Adds a \'quitup\' alias
+        to the destination file
+        (default destination is ~/.zshrc)
+    ''')
+addalias.set_defaults(which='addalias')
+addalias.add_argument(
+    '--dest',
+    action='store_const',
+    default='~/.zshrc',
+    help='Defines the destination file where the alias should be placed'
+)
+
 ARGS = parser.parse_args()
 
 if ARGS.version:
@@ -70,3 +87,6 @@ elif ARGS.which == 'setup':
 
 elif ARGS.which == 'upload':
     import cmd.argParser.upload
+
+elif ARGS.which == 'addalias':
+    import cmd.argParser.addalias
