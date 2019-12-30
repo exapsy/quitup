@@ -1,5 +1,5 @@
 name = 'Quitup'
-version = 'v0.1'
+version = 'v1.0'
 
 def getRelease():
     return name + ' ' + version

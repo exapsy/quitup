@@ -40,3 +40,5 @@ alias quitup='<repo_dir>/quitup.py'
 - **python3**
 - **Linux** - Manjaro **or** Ubuntu
     
+---
+v1.0
