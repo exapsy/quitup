@@ -27,7 +27,7 @@ python ./install.py upload --all
 - `--zsh` - uploads all local **zsh** changes to git
 - `--all` - uploads all local changes
 
-### Requirements
+## Requirements
 
 - **python3**
 - **Linux** - Manjaro **or** Ubuntu
