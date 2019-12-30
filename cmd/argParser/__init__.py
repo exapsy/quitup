@@ -7,6 +7,7 @@ import argparse
 parser = argparse.ArgumentParser(
     'QUITUP',
     description='Quick setup for my linux platform')
+parser.set_defaults(which='quitup')
 parser.add_argument(
     '-v',
     '--version',
@@ -72,6 +73,7 @@ addalias.set_defaults(which='addalias')
 addalias.add_argument(
     '--dest',
     action='store_const',
+    const='~/.zshrc',
     default='~/.zshrc',
     help='Defines the destination file where the alias should be placed'
 )
@@ -90,3 +92,6 @@ elif ARGS.which == 'upload':
 
 elif ARGS.which == 'addalias':
     import cmd.argParser.addalias
+
+elif ARGS.which == 'quitup':
+    parser.print_help()

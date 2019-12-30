@@ -1,8 +1,20 @@
 from cmd.argParser import ARGS
-from lib.vim import setupVim
 
 destinationFile = ARGS.dest
 
-# from pathlib import 
+from lib.log import fatal
+if not destinationFile:
+    fatal('''
+    Empty destination,
+    try defining a different destination
+    with `--dest`\ndefault is `/home/<user>/.zshrc`
+    ''')
 
-from os import system
+import sys, os
+from lib.os import sudoScript
+
+# Get path (eg '/home/joe/something/quitup/quitup.py')
+appScriptPath = sys.argv[0]
+alias = '\'alias quitup=\"/usr/bin/python ' + appScriptPath + '\"\''
+addAliasCmd = sudoScript('echo ' + alias + ' >> ' + destinationFile)
+os.system(addAliasCmd)
