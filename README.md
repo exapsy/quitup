@@ -15,14 +15,6 @@ python ./quitup.py upload --all
 
 ### Commands
 
-#### `addalias`
-Adds alias for **Quitup** in the destination bash 
-```bash
-alias quitup='<repo_dir>/quitup.py'
-```
-
-- `--dist <file>` - The file in which the alias should be placed in (default=`~/.zshrc`)
-
 #### `setup`
 
 - `--vim` - installs and configures **vim**
@@ -34,6 +26,14 @@ alias quitup='<repo_dir>/quitup.py'
 - `--vim` - uploads all local **vim** changes to git
 - `--zsh` - uploads all local **zsh** changes to git
 - `--all` - uploads all local changes
+
+#### `addalias`
+Adds alias for **Quitup** in the destination bash 
+```bash
+alias quitup='<repo_dir>/quitup.py'
+```
+
+- `--dist <file>` - The file in which the alias should be placed in (default=`~/.zshrc`)
 
 ## Requirements
 
