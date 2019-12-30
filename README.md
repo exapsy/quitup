@@ -8,7 +8,13 @@
 
 ## Usage
 
+```sh
+python ./install.py setup --vim
+python ./install.py upload --all
+```
+
 ### Commands
+
 #### `setup`
 
 - `--vim` - installs and configures **vim**
