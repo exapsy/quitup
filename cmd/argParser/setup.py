@@ -1,6 +1,6 @@
 from cmd.argParser import ARGS
-from lib.vim import setupVim
-# from lib.zsh import setupZsh
+import lib.vim
+import lib.zsh
 
 shouldSetupAll = (
 (
@@ -15,10 +15,9 @@ shouldSetupAll = (
 ))
 
 if shouldSetupAll:
-    setupVim()
-    # setupZsh()
+    lib.vim.setup()
+    lib.zsh.setup()
 elif ARGS.zsh:
-    # setupZsh()
-    print('Setting up zsh')
+    lib.zsh.setup()
 elif ARGS.vim:
-    setupVim()
+    lib.vim.setup()

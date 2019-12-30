@@ -1,6 +1,5 @@
-import lib.os
-
 def installVim():
+    import lib.os
     lib.os.installPackage('vim')
 
 def copyFiles():
@@ -49,7 +48,7 @@ def installVundlePlugins():
     from os import system
     system('vim +BundleInstall +qall')
 
-def setupVim():
+def setup():
     from lib.log import info, ok
     info('Installing vim ...')
     installVim()
