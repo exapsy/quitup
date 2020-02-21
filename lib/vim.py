@@ -1,62 +1,117 @@
-def installVim():
-    import lib.os
-    lib.os.installPackage('vim')
+from lib import HOME_DIR, VIM_DIR
 
-def copyFiles():
+def installNeovim():
+    from os import system
+    system('sudo pip install neovim')
+
+def extractFilesToHome():
     from shutil import copyfile, copytree
-    from pathlib import Path
     from sys import exit
-    from lib.log import fatal, getWarningMessage
-
-    # Home directory
-    home = str(Path().home())
+    from lib import log
 
     # Copy .vimrc into root directory
     try:
         copyfile(
-            './files/vim/.vimrc',
-            home + '/.vimrc')
+            VIM_DIR + '.vimrc',
+            HOME_DIR + '/.vimrc'
+        )
     except FileNotFoundError:
-        fatal(
-            '.vimrc file not found in repository\'s files directory')
-        exit()
+        log.fatal('.vimrc file not found in repository\'s files directory')
 
     # Copy .vim directory into root directory
     try:
         copytree(
             './files/vim/.vim',
-            home + '/.vim')
+            (HOME_DIR + '/.vim'),
+        )
+
     except FileNotFoundError:
-        fatal(
-            '.vim directory not found in repository\'s files directory')
-    except FileExistsError:
+        log.fatal('.vim directory not found in repository\'s files directory')
         
-        proceed = input(getWarningMessage(
+    except FileExistsError:
+        proceed = input(log.getWarningMessage(
             'Directory already exists, should I proceed? Yy/Nn: '))
         if proceed.lower() != 'y':
             return
         copytree(
-            './files/vim/.vim',
-            home + '/.vim',
+            VIM_DIR + '.vim',
+            HOME_DIR + '/.vim',
             dirs_exist_ok=True)
 
-def installYouCompleteMe():
-    from lib.log import error
-    error('installYouCompleteMe: Incomplete')
+    try:
+        copytree(
+            './files/vim/.config/nvim',
+            (HOME_DIR + '/.config'),
+        )
+
+    except FileNotFoundError:
+        log.fatal('.config/nvim directory not found in repository\'s files directory')
+        
+    except FileExistsError:
+        proceed = input(log.getWarningMessage(
+            'Directory already exists, should I proceed? Yy/Nn: '))
+        if proceed.lower() != 'y':
+            return
+        copytree(
+            './files/vim/.config/nvim',
+            (HOME_DIR + '/.config'),
+            dirs_exist_ok=True)
+
+def setupCoc():
+    from os import system
+    from lib import log
+    
+    # JEDI used for python autocomplete
+    system('sudo pip install jedi')
+    system('cd ~/.vim/bundle/coc.nvim && yarn')
+    
+    # Install Coc dependencies
+    cocPlugins = ' '.join([
+        'coc-yaml',
+        'coc-webpack',
+        'coc-tsserver',
+        'coc-tslint-plugin',
+        'coc-syntax',
+        'coc-svg',
+        'coc-python',
+        'coc-prettier',
+        'coc-markdownlint',
+        'coc-json',
+        'coc-jest',
+        'coc-highlight',
+        'coc-go',
+        'coc-git',
+        'coc-css',
+    ])
+    system('vim +CocInstall ' + cocPlugins)
+
 
 def installVundlePlugins():
     from os import system
+
     system('vim +BundleInstall +qall')
 
 def setup():
-    from lib.log import info, ok
-    info('Installing vim ...')
-    installVim()
-    info('Setting up vim configurations ...')
-    info('Copying vim files ...')
-    copyFiles()
-    info('Installing youcompleteme')
-    installYouCompleteMe()
-    info('Installing vundle plugins')
+    from lib import log
+
+    log.info('Installing neovim ...')
+    installNeovim()
+    log.info('Setting up vim configurations ...')
+    log.info('Extracting vim files ...')
+    extractFilesToHome()
+    log.info('Installing vundle plugins')
     installVundlePlugins()
-    ok('Done!')
+    log.info('Setting up Coc')
+    setupCoc()
+    log.ok('Done!')
+
+def upload():
+    from os import system
+    from lib import log
+
+    log.info('Importing .vimrc')
+    system('cp ' + HOME_DIR + '/.vimrc' + ' ' + VIM_DIR)
+    log.info('Importing .vim directory')
+    system('cp -R ' + HOME_DIR + '/.vim' + ' ' + VIM_DIR)
+    log.info('Importing ./.config/nvim directory')
+    system('cp -R ' + HOME_DIR + '/.config/nvim' + ' ' + VIM_DIR)

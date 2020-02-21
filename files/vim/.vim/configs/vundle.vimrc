@@ -12,15 +12,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " YouCompleteMe - Auto complete
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
+" Autocomplete
+Plugin 'neoclide/coc.nvim'
 " NerdTree for file navigation & management
 Plugin 'scrooloose/nerdtree'
 " Nerd Git
 Plugin 'Xuyuanp/nerdtree-git-plugin' 
 " Typescript syntax
 Plugin 'leafgarland/typescript-vim'
-" Typescript Lintering
-Plugin 'Qurami/tsuquyomi'
 " JS and Typescript correct indentation
 " Plugin 'jason0x43/vim-js-indent'
 " Code theme
@@ -53,6 +53,8 @@ Plugin 'fatih/vim-go'
 Plugin 'mdempsky/gocode', {'rtp': 'vim/'}
 " Vim Airline #powerline #line #horizontalline
 Plugin 'vim-airline/vim-airline'
+" NERDTree Icons #nerdtree #icons
+Plugin 'ryanoasis/vim-devicons'
 
 " All of the plugins must be hosted before this line
 call vundle#end()

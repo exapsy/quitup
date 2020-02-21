@@ -1,9 +1,9 @@
 # Determines if the running platform
 # is valid for the installation
 
-import lib.os
+from lib import system
 
-platform = lib.os.getOS()
+platform = system.getOS()
 
 if platform != 'Linux':
     print('Unsupported platform: ', platform)

@@ -1,6 +1,8 @@
+from lib import HOME_DIR, ZSH_DIR
+
 def installZsh():
-    import lib.os
-    lib.os.installPackage('zsh')
+    from lib.system import installPackage
+    installPackage('zsh')
 
 def copyFiles():
     from shutil import copyfile, copytree
@@ -46,3 +48,8 @@ def setup():
     installZsh()
     info('Copying zsh files ...')
     copyFiles()
+
+def upload():
+    from os import system
+    system('cp ' + HOME_DIR + '/.zshrc' + ' ' + ZSH_DIR)
+    system('cp -R ' + HOME_DIR + '/.oh-my-zsh' + ' ' + ZSH_DIR)
