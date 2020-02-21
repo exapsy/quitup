@@ -89,6 +89,10 @@ def setupCoc():
     ])
     system('vim +CocInstall ' + cocPlugins)
 
+def installVundle():
+    from os import system
+    system('mkdir ~/.vim/bundle && git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim')
+
 
 def installVundlePlugins():
     from os import system
@@ -157,11 +161,6 @@ def upload():
     copytree(
         VIM_DIR + '.vim/configs',
         HOME_DIR + '.vim/configs',
-        dirs_exist_ok=True,
-    )
-    copytree(
-        VIM_DIR + '.vim/bundle/Vundle.vim',
-        HOME_DIR + '.vim/bundle/Vundle.vim',
         dirs_exist_ok=True,
     )
 
