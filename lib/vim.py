@@ -2,9 +2,9 @@ from lib import HOME_DIR, VIM_DIR
 
 def installNeovim():
     from os import system
-    from lib.system import sudoScript
-    cmd = 'pip install neovim'
-    system(sudoScript(cmd) + '||' + cmd)
+    from lib.system import installPackage
+    installPackage('neovim')
+    system('sudo pip install pynvim 2>/dev/null || pip install pynvim')
 
 def extractFilesToHome():
     from shutil import copyfile, copytree
