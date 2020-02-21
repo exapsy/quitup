@@ -7,7 +7,7 @@ yay -S python python-pip 2>/dev/null || \
 sudo pip install pathlib 2>/dev/null || \
 	pip install pathlib
 
-scriptPath="`dirname \"$0\"`"
+scriptPath="$PWD"
 quitupAlias="alias quitup='python $scriptPath/../quitup.py'"
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "Found .zshrc"
