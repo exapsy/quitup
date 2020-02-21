@@ -42,7 +42,7 @@ def extractFilesToHome():
     try:
         copytree(
             VIM_DIR + '.config/nvim',
-            HOME_DIR + '.config',
+            HOME_DIR + '.config/nvim',
         )
 
     except FileNotFoundError:
