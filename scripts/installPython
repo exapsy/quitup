@@ -13,7 +13,7 @@ if [[ -f "$HOME/.zshrc" ]]; then
 	if ![[ grep -Fxq "$quitupAlias" "$HOME/.zshrc" ]]; then
 		echo $quitupAlias >> ~/.zshrc
 	fi
-if [[ -f "$HOME/.bashrc" ]]; then
+elif [[ -f "$HOME/.bashrc" ]]; then
 	echo "Found .bashrc"
 	if ![[ grep -Fxq "$quitupAlias" "$HOME/.bashrc" ]]; then
 		echo $quitupAlias >> ~/.bashrc
