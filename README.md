@@ -9,8 +9,10 @@
 ## Usage
 
 ```sh
-python ./quitup.py setup --vim
-python ./quitup.py upload --all
+bash ./scripts/installQuitup
+
+quitup setup --vim
+quitup upload --all
 ```
 
 ### Commands
