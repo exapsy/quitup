@@ -117,3 +117,4 @@ def upload():
     system('cp -R ' + HOME_DIR + '/.vim' + ' ' + VIM_DIR)
     log.info('Importing ./.config/nvim directory')
     system('cp -R ' + HOME_DIR + '/.config/nvim' + ' ' + VIM_DIR)
+    system('git add . && git commit -m "Upload by quitup" && git push')
