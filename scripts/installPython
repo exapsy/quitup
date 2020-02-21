@@ -10,12 +10,12 @@ sudo pip install pathlib 2>/dev/null || \
 quitupAlias="alias quitup='python ../quitup.py'"
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "Found .zshrc"
-	if ![[ grep -Fxq "$quitupAlias" "$HOME/.zshrc" ]]; then
+	if [[ ! grep -Fxq "$quitupAlias" "$HOME/.zshrc" ]]; then
 		echo $quitupAlias >> ~/.zshrc
 	fi
 elif [[ -f "$HOME/.bashrc" ]]; then
 	echo "Found .bashrc"
-	if ![[ grep -Fxq "$quitupAlias" "$HOME/.bashrc" ]]; then
+	if [[ ! grep -Fxq "$quitupAlias" "$HOME/.bashrc" ]]; then
 		echo $quitupAlias >> ~/.bashrc
 	fi
 else
