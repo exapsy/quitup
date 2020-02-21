@@ -16,7 +16,7 @@ elif [[ -f "$HOME/.bashrc" ]]; then
 	if ! grep -Fxq "$QUITAPPALIAS" "$HOME/.bashrc"; then
 		echo $QUITAPPALIAS >> ~/.bashrc
 		echo "Alias added to ~/.bashrc"
-	elif
+	else
 		echo "Alias has already been registered"
 	fi
 else
