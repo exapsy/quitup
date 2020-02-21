@@ -4,7 +4,7 @@ yay -S python python-pip 2>/dev/null || \
 	sudo apt install python3 python-pip 2>/dev/null || \
 	apt install python3 python-pip 2>/dev/null
 
-sudo pip install pathlib || \
+sudo pip install pathlib 2>/dev/null || \
 	pip install pathlib
 
 quitupAlias="alias quitup='python ../quitup.py'"
