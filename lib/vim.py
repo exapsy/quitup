@@ -115,10 +115,10 @@ def addNvimToVimAlias():
     from lib import log
     source_file = None
     try:
-        source_file = open(HOME_DIR + '.zshrc', mode='rw+')
+        source_file = open(HOME_DIR + '.zshrc', mode='r+')
     except OSError:
         try:
-            source_file = open(HOME_DIR + '.bashrc')
+            source_file = open(HOME_DIR + '.bashrc', mode='r+')
         except OSError:
             log.fatal("Could not find zshrc or bashrc file in home")
 
