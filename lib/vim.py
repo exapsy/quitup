@@ -4,6 +4,8 @@ def installNeovim():
     from os import system
     from lib.system import installPackage
     installPackage('neovim')
+    installPackage('node')
+    installPackage('yarn')
     system('sudo pip install pynvim 2>/dev/null || pip install pynvim')
 
 def extractFilesToHome():
