@@ -52,7 +52,7 @@ def extractFilesToHome():
         
     except FileExistsError:
         proceed = input(log.getWarningMessage(
-            'Directory' + '.config/nvim' + ' already exists, should I proceed? Yy/Nn: '))
+            'Directory ' + '.config/nvim' + ' already exists, should I proceed? Yy/Nn: '))
         if proceed.lower() != 'y':
             return
         copytree(
