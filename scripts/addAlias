@@ -1,24 +1,23 @@
 #!/bin/bash
-
-echo "Adding quitup alias"
+echo -e "\e[32mAdding quitup alias\e[0m"
 SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
 QUITAPPALIAS="alias quitup='python3 $SCRIPTPATH/../quitup.py'"
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "Found .zshrc"
 	if ! grep -Fxq $QUITAPPALIAS $HOME/.zshrc; then
 		echo $QUITAPPALIAS >> ~/.zshrc
-		echo "Alias added to ~/.zshrc"
+		echo -e "\e[32mAlias added to ~/.zshrc\e[0m"
 	else
-		echo "Alias has already been registered"
+		echo -e "\e[33mAlias has already been registered\e[0m"
 	fi
 elif [[ -f "$HOME/.bashrc" ]]; then
 	echo "Found .bashrc"
 	if ! grep -Fxq "$QUITAPPALIAS" "$HOME/.bashrc"; then
 		echo $QUITAPPALIAS >> ~/.bashrc
-		echo "Alias added to ~/.bashrc"
+		echo -e "\e[32mAlias added to ~/.bashrc\e[0m"
 	else
-		echo "Alias has already been registered"
+		echo -e "\e[33mAlias has already been registered\e[0m"
 	fi
 else
-	echo "No zshrc or bashrc file was found in the workspace"
+	echo -e "\e[31mNo zshrc or bashrc file was found in the workspace\e[0m"
 fi

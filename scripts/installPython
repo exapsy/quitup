@@ -1,5 +1,5 @@
 #!/bin/bash
-echo "Installing python"
+echo -e "\e[32mInstalling python\e[0m"
 yay -S python python-pip 2>/dev/null || \
 	sudo pacman -S python python-pip 2>/dev/null || \
 	sudo apt install python3 python-pip 2>/dev/null || \
