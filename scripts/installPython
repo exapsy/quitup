@@ -1,6 +1,6 @@
 #!/bin/bash
 yay -S python python-pip > /dev/null || \
-	sudo pacman -S python python-pip 2 > /dev/null || \
-	sudo apt install python3 python-pip 2 > /dev/null || \
-	apt install python3 python-pip 2 > /dev/null
+	sudo pacman -S python python-pip 2>/dev/null || \
+	sudo apt install python3 python-pip 2>/dev/null || \
+	apt install python3 python-pip 2>/dev/null
 
