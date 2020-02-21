@@ -8,6 +8,7 @@ def installGolang():
 # Moved to a bash script instead
 # this remains here to constantly
 # remind me how stupid I am
+
 # def installPython():
     # installPackage('python')
     # installPackage('pip')
