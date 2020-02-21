@@ -8,7 +8,7 @@ if [[ -f "$HOME/.zshrc" ]]; then
 	if ! grep -Fxq $QUITAPPALIAS $HOME/.zshrc; then
 		echo $QUITAPPALIAS >> ~/.zshrc
 		echo "Alias added to ~/.zshrc"
-	elif
+	else
 		echo "Alias has already been registered"
 	fi
 elif [[ -f "$HOME/.bashrc" ]]; then
