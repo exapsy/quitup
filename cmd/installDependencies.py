@@ -3,9 +3,14 @@ from lib.system import installPackage
 def installGolang():
     installPackage('golang')
 
-def installPython():
-    installPackage('python')
-    installPackage('pip')
+# BIG BRAIN
+# ( •_•)>⌐□-□ (⌐□_□)
+# Moved to a bash script instead
+# this remains here to constantly
+# remind me how stupid I am
+# def installPython():
+    # installPackage('python')
+    # installPackage('pip')
 
 def installClangd():
     installPackage('clangd')
