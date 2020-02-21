@@ -8,6 +8,12 @@ sudo pip install pathlib 2>/dev/null || \
 	pip install pathlib
 
 quitupAlias="alias quitup='python ../quitup.py'"
-echo $quitupAlias >> ~/.zshrc || \
-	echo $quitupAlias >> ~/.bashrc || \
-	echo "No zshrc or bashrc file was found in the workspace"
+if test -f "~/.zshrc"; then
+	if test ! grep -Fxq "$quitupAlias" ~/.zshrc; then
+		echo $quitupAlias >> ~/.zshrc
+	elif
+elif test -f "~/.bashrc"; then
+	if test ! grep -Fxq "$quitupAlias" ~/.bashrc; then
+		echo $quitupAlias >> ~/.bashrc
+	elif
+else echo "No zshrc or bashrc file was found in the workspace"
