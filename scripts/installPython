@@ -6,3 +6,8 @@ yay -S python python-pip 2>/dev/null || \
 
 sudo pip install pathlib || \
 	pip install pathlib
+
+quitupAlias="alias quitup='python ../quitup.py'"
+echo $quitupAlias >> ~/.zshrc || \
+	echo $quitupAlias >> ~/.bashrc || \
+	echo "No zshrc or bashrc file was found in the workspace"
