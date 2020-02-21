@@ -11,9 +11,11 @@ quitupAlias="alias quitup='python ../quitup.py'"
 if test -f "~/.zshrc"; then
 	if test ! grep -Fxq "$quitupAlias" ~/.zshrc; then
 		echo $quitupAlias >> ~/.zshrc
-	elif
+	fi
 elif test -f "~/.bashrc"; then
 	if test ! grep -Fxq "$quitupAlias" ~/.bashrc; then
 		echo $quitupAlias >> ~/.bashrc
-	elif
-else echo "No zshrc or bashrc file was found in the workspace"
+	fi
+else
+	echo "No zshrc or bashrc file was found in the workspace"
+fi
