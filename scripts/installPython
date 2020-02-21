@@ -4,3 +4,5 @@ yay -S python python-pip 2>/dev/null || \
 	sudo apt install python3 python-pip 2>/dev/null || \
 	apt install python3 python-pip 2>/dev/null
 
+sudo pip install pathlib || \
+	pip install pathlib
