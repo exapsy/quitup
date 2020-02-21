@@ -126,7 +126,6 @@ def addNvimToVimAlias():
     found_vi_alias = False
     lines = source_file.readlines()
     for line in lines:
-        print(line)
         if line == "alias vim=nvim\n":
             found_vim_alias
         if line == "alias vi=nvim\n":
