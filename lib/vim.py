@@ -66,7 +66,7 @@ def setupCoc():
     from lib import log
     
     # JEDI used for python autocomplete
-    system('sudo pip install jedi')
+    system('sudo pip install jedi 2>/dev/null || pip install jedi')
     system('cd ~/.vim/bundle/coc.nvim && yarn')
     
     # Install Coc dependencies
