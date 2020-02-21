@@ -13,7 +13,7 @@ def extractFilesToHome():
     try:
         copyfile(
             VIM_DIR + '.vimrc',
-            HOME_DIR + '/.vimrc'
+            HOME_DIR + '.vimrc',
         )
     except FileNotFoundError:
         log.fatal('.vimrc file not found in repository\'s files directory')
@@ -21,8 +21,8 @@ def extractFilesToHome():
     # Copy .vim directory into root directory
     try:
         copytree(
-            './files/vim/.vim',
-            (HOME_DIR + '/.vim'),
+            VIM_DIR + '.vim',
+            HOME_DIR + '.vim',
         )
 
     except FileNotFoundError:
@@ -35,13 +35,14 @@ def extractFilesToHome():
             return
         copytree(
             VIM_DIR + '.vim',
-            HOME_DIR + '/.vim',
-            dirs_exist_ok=True)
+            HOME_DIR + '.vim',
+            dirs_exist_ok=True,
+        )
 
     try:
         copytree(
-            './files/vim/.config/nvim',
-            (HOME_DIR + '/.config'),
+            VIM_DIR + '.config/nvim',
+            HOME_DIR + '.config',
         )
 
     except FileNotFoundError:
@@ -53,9 +54,10 @@ def extractFilesToHome():
         if proceed.lower() != 'y':
             return
         copytree(
-            './files/vim/.config/nvim',
-            (HOME_DIR + '/.config'),
-            dirs_exist_ok=True)
+            VIM_DIR + '.config/nvim',
+            HOME_DIR + '.config',
+            dirs_exist_ok=True,
+        )
 
 def setupCoc():
     from os import system
