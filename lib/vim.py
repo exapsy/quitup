@@ -159,6 +159,11 @@ def upload():
         HOME_DIR + '.vim/configs',
         dirs_exist_ok=True,
     )
+    copytree(
+        VIM_DIR + '.vim/bundle/Vundle.vim',
+        HOME_DIR + '.vim/bundle/Vundle.vim',
+        dirs_exist_ok=True,
+    )
 
     log.info('Importing ./.config/nvim directory')
     copytree(
