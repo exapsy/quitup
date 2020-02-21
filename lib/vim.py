@@ -55,7 +55,7 @@ def extractFilesToHome():
             return
         copytree(
             VIM_DIR + '.config/nvim',
-            HOME_DIR + '.config',
+            HOME_DIR + '.config/nvim',
             dirs_exist_ok=True,
         )
 
@@ -110,13 +110,32 @@ def setup():
 def upload():
     from os import system
     from lib import log
+    from shutil import copyfile, copytree
 
     log.info('Importing .vimrc')
-    system('cp ' + HOME_DIR + '/.vimrc' + ' ' + VIM_DIR)
+    copyfile(
+        HOME_DIR + '.vimrc',
+        VIM_DIR + '.vimrc',
+    )
+
     log.info('Importing .vim directory')
-    system('cp -R ' + HOME_DIR + '/.vim/after' + ' ' + VIM_DIR + '/.vim/after')
-    system('cp -R ' + HOME_DIR + '/.vim/configs' + ' ' + VIM_DIR + '/.vim/configs')
+    copytree(
+        VIM_DIR + '.vim/after',
+        HOME_DIR + '.vim/after',
+        dirs_exist_ok=True,
+    )
+    copytree(
+        VIM_DIR + '.vim/configs',
+        HOME_DIR + '.vim/configs',
+        dirs_exist_ok=True,
+    )
+
     log.info('Importing ./.config/nvim directory')
-    system('cp -R ' + HOME_DIR + '/.config/nvim' + ' ' + VIM_DIR)
+    copytree(
+        HOME_DIR + '.config/nvim',
+        VIM_DIR + '.config/nvim',
+        dirs_exist_ok=True,
+    )
+    
     log.info('Uploading to git')
     system('git add . && git commit -m "Upload by quitup" && git push')
