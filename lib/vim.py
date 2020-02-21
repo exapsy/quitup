@@ -2,7 +2,9 @@ from lib import HOME_DIR, VIM_DIR
 
 def installNeovim():
     from os import system
-    system('sudo pip install neovim')
+    from lib.system import sudoScript
+    cmd = 'pip install neovim'
+    system(sudoScript(cmd) + '||' + cmd)
 
 def extractFilesToHome():
     from shutil import copyfile, copytree
@@ -98,6 +100,8 @@ def setup():
 
     log.info('Installing neovim ...')
     installNeovim()
+    log.info('Add vim and vi alias to nvim ...')
+    addNvimToVimAlias()
     log.info('Setting up vim configurations ...')
     log.info('Extracting vim files ...')
     extractFilesToHome()
@@ -107,6 +111,32 @@ def setup():
     setupCoc()
     log.ok('Done!')
 
+def addNvimToVimAlias():
+    from lib import log
+    source_file = None
+    try:
+        source_file = open(HOME_DIR + '.zshrc', mode='r+')
+    except OSError:
+        try:
+            source_file = open(HOME_DIR + '.bashrc')
+        except OSError:
+            log.fatal("Could not find zshrc or bashrc file in home")
+
+    found_vim_alias = False
+    found_vi_alias = False
+    lines = source_file.readlines()
+    for line in lines:
+        if line == "alias vim=nvim":
+            found_vim_alias
+        if line == "alias vi=nvim":
+            found_vi_alias
+
+    if not found_vi_alias:
+        source_file.write('alias vi=nvim')
+    if not found_vim_alias:
+        source_file.write('alias vim=nvim')
+
+    
 def upload():
     from os import system
     from lib import log
