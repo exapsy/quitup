@@ -115,7 +115,7 @@ def addNvimToVimAlias():
     from lib import log
     source_file = None
     try:
-        source_file = open(HOME_DIR + '.zshrc', mode='r+')
+        source_file = open(HOME_DIR + '.zshrc', mode='rw+')
     except OSError:
         try:
             source_file = open(HOME_DIR + '.bashrc')
