@@ -126,15 +126,16 @@ def addNvimToVimAlias():
     found_vi_alias = False
     lines = source_file.readlines()
     for line in lines:
-        if line == "alias vim=nvim":
+        print(line)
+        if line == "alias vim=nvim\n":
             found_vim_alias
-        if line == "alias vi=nvim":
+        if line == "alias vi=nvim\n":
             found_vi_alias
 
     if not found_vi_alias:
-        source_file.write('alias vi=nvim')
+        source_file.write('alias vi=nvim\n')
     if not found_vim_alias:
-        source_file.write('alias vim=nvim')
+        source_file.write('alias vim=nvim\n')
 
     
 def upload():
