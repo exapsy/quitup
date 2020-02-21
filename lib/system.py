@@ -41,11 +41,12 @@ def getPackageManagerCommands():
         return scripts
     return scripts
 
-def installPackage(name):
+def installPackage(pkgName):
     scripts = getPackageManagerCommands()
     installCmd = ' '.join(scripts['install'])
-    cmd = sudoScript(installCmd + ' ' + name)
-    os.system(cmd)
+    cmd = installCmd + ' ' + pkgName
+    fullCmd = sudoScript(cmd + '2>/dev/null') + ' || ' + cmd
+    os.system(fullCmd)
 
 def sudoScript(script):
     return 'sudo ' + script.strip()
