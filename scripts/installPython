@@ -7,17 +7,17 @@ yay -S python python-pip 2>/dev/null || \
 sudo pip install pathlib 2>/dev/null || \
 	pip install pathlib
 
-scriptPath="$PWD"
-quitupAlias="alias quitup='python $scriptPath/../quitup.py'"
+SCRIPTPATH="$( cd "$(dirname "$0")" >/dev/null 2>&1 ; pwd -P )"
+QUITAPPALIAS="alias quitup='python $SCRIPTPATH/../quitup.py'"
 if [[ -f "$HOME/.zshrc" ]]; then
 	echo "Found .zshrc"
-	if ! grep -Fxq $quitupAlias $HOME/.zshrc; then
-		echo $quitupAlias >> ~/.zshrc
+	if ! grep -Fxq $QUITAPPALIAS $HOME/.zshrc; then
+		echo $QUITAPPALIAS >> ~/.zshrc
 	fi
 elif [[ -f "$HOME/.bashrc" ]]; then
 	echo "Found .bashrc"
-	if ! grep -Fxq "$quitupAlias" "$HOME/.bashrc"; then
-		echo $quitupAlias >> ~/.bashrc
+	if ! grep -Fxq "$QUITAPPALIAS" "$HOME/.bashrc"; then
+		echo $QUITAPPALIAS >> ~/.bashrc
 	fi
 else
 	echo "No zshrc or bashrc file was found in the workspace"
