@@ -14,7 +14,7 @@ Plugin 'VundleVim/Vundle.vim'
 " YouCompleteMe - Auto complete
 "Plugin 'Valloric/YouCompleteMe'
 " Autocomplete
-Plugin 'neoclide/coc.nvim'
+Plugin 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
 " NerdTree for file navigation & management
 Plugin 'scrooloose/nerdtree'
 " Nerd Git
